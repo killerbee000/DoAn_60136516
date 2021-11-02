@@ -37,7 +37,7 @@
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Thông tin người dùng </a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="login.php">Đăng Xuất</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
                 </ul>
             </li>
         </ul>
@@ -114,7 +114,7 @@
                             <li class="breadcrumb-item active">Danh sách công việc</li>
                         </ol>
 
-                        <a class="mb-4 btn btn-primary" href="#" role="button">Tạo mới CV</a>
+                        <a class="mb-4 btn btn-primary" href="createCV.php" role="button">Tạo mới CV</a>
 
                         <div class="card mb-4">
                             <div class="card-body">

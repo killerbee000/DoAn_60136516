@@ -15,8 +15,9 @@
 
     <?php
     include './SQL/config.php';
+
     $query = 'SELECT * FROM congty';
-    $result = $conn->query($query);
+    $result = $conn ->query($query);
     if(!$result) echo 'Cau truy van bi sai';
     ?>
         <nav class="sb-topnav navbar navbar-expand navbar-blue bg-light">
@@ -36,10 +37,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Thông tin cá nhân</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
@@ -49,11 +49,6 @@
                 <nav class="sb-sidenav accordion sb-sidenav bg-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -108,10 +103,13 @@
                             </a>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+<!--                    <div class="sb-sidenav-footer">-->
+<!--                        <div class="small">Tài khoản đăng nhập:</div>-->
+<!--                        --><?php
+//                        session_start();
+//                        print_r($_SESSION["email"]) ;
+//                        ?>
+<!--                    </div>-->
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -122,6 +120,7 @@
                             <li class="breadcrumb-item"><a href="index.html">TRANG CHỦ</a></li>
                             <li class="breadcrumb-item active">DSCT</li>
                         </ol>
+                        <a class="mb-4 btn btn-primary" href="createCT.php" role="button">Nhập công ty mới</a>
 
                         <div class="card mb-4">
                             <div class="card-body">
@@ -152,6 +151,7 @@
                                             </tr>
                                         <?php } ?>
                                     <?php } ?>
+
                                     <?php $conn->close(); ?>
                                 </table>
                             </div>

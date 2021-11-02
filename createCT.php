@@ -5,53 +5,41 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title>CREATE_JOB</title>
+        <title>CREATE_COMPANY</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
 
     <?php
-    include './SQL/config.php';
-    //Dropdown list MACTY
-    $query = "SELECT * FROM congty";
-    $result1 = $conn->query($query);
-
-    $options ='';
-    while($row0 = mysqli_fetch_array($result1))
-    {
-        $options = $options."<option>$row0[0]</option>";
-    }
-
-    ?>
-
-    <?php
-    //THÊM CV
+    //THÊM CTY
     if (isset($_POST['submit'])) {
-        $macv = $_POST['MACV'];
-        $tencv = $_POST['TENCV'];
-        $sl = $_POST['SL'];
-        $nn = $_POST['NN'];
-        $macty = $_POST['MACTY'];
-        (int)$mucluong = $_POST['MUCLUONG'];
-        $tgkt = $_POST['TGKETTHUC'];
 
-        $checktontai = "SELECT * FROM congviec WHERE MACV = '$macv' AND MUCLUONG = '$mucluong'";
-        $result = $conn->query($checktontai);
-        if($result->num_rows > 0)
+        $macty = $_POST['MACTY'];
+        $tencty = $_POST['TENCTY'];
+        $slnv = $_POST['SLNV'];
+        $diachi = $_POST['DIACHI'];
+        $quocgia = $_POST['QUOCGIA'];
+        $email = $_POST['EMAIL'];
+        $sdt = $_POST['SDT_CT'];
+        $anh = $_POST['ANH'];
+
+        $checktontai_CTY = "SELECT * FROM congty WHERE MACTY = '$macty' AND SDT_CT = '$sdt' ";
+        $result2 = $conn->query($checktontai_CTY);
+        if($result2->num_rows > 0)
         {
-            $error_result = "Công việc đã có trên website";
+            $error_result = "Công ty đã đăng ký trên website";
         }
-        elseif (!(is_numeric($mucluong)  && $mucluong > 0 && is_int(0+$mucluong))) {
-            $error_result = "Lỗi dữ liệu MUCLUONG";
+        elseif (!(is_numeric($sdt) && $sdt > 0 && is_int(0+$sdt))) {
+            $error_result = "Lỗi dữ liệu số điện thoại";
         }
         else
         {
-            $query = "INSERT INTO congviec (MACV, TENCV, SL, NN, MACTY,MUCLUONG, TGKETTHUC) VALUES ('$macv','$tencv','$sl','$nn','$macty','$mucluong','$tgkt')";
-            $result = $conn->query($query);
+            $query = "INSERT INTO congty(MACTY, TENCTY, DIACHI, SLNV, QUOCGIA, EMAIL, SDT_CT, Anh) VALUES ('$macty','$tencty','$diachi','$slnv','$quocgia','$email','$sdt','$anh')";
+            $result2 = $conn->query($query);
             $error_result = "Đã tạo thành công!";
-//            if (!$result) {
-//                $error_result = "Lỗi server!";
-//            }
+            if (!$result2) {
+                $error_result = "Lỗi server!";
+            }
         }
     }
     ?>
@@ -64,67 +52,72 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h2 class="text-center font-weight-light my-4">TẠO CÔNG VIỆC MỚI</h2></div>
+                                    <div class="card-header bg-primary"><h2 class="text-center font-weight-light my-4 text-light">NHẬP CÔNG TY MỚI</h2></div>
                                     <div class="card-body">
                                         <form action="" method="post">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="MACV" type="text" value="<?php if(isset($macv)) echo $macv?>" required/>
-                                                        <label for="MACV">Mã công việc</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" name="TENCV" type="text" value="<?php if(isset($tencv)) echo $tencv?>" required />
-                                                        <label for="TENCV">Tên công việc</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="SL" type="number" value="<?php if(isset($sl)) echo $sl?>" required/>
-                                                        <label for="SL">Số lượng ứng tuyển</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="NN" type="text" value="<?php if(isset($nn)) echo $nn?>" required/>
-                                                        <label for="NN">Ngôn ngữ</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-<!--                                                        <input class="form-control" name="MACTY" type="text" value="--><?php //if(isset($macty)) echo $macty?><!--" required/>-->
-<!--                                                        <label for="MACTY">Mã công ty</label>-->
-                                                        <select class="form-select" name="MACTY" aria-label="Default select example">
-                                                            <option selected disabled>Chọn công ty</option>
-                                                            <?php echo $options;?>
-                                                        </select>
+                                                        <input class="form-control" name="MACTY" type="text" value="<?php if(isset($macty)) echo $macty?>" required/>
                                                         <label for="MACTY">Mã công ty</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="MUCLUONG" type="text" value="<?php if(isset($mucluong)) echo $mucluong?>" required />
-                                                        <label for="MUCLUONG">Mức lương</label>
+                                                    <div class="form-floating">
+                                                        <input class="form-control" name="TENCTY" type="text" value="<?php if(isset($tencty)) echo $tencty?>" required />
+                                                        <label for="TENCTY">Tên công ty</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="SLNV" type="number" value="<?php if(isset($slnv)) echo $slnv?>" required/>
+                                                        <label for="SLNV">Số lượng nhân viên</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="DIACHI" type="text" value="<?php if(isset($diachi)) echo $diachi?>" required/>
+                                                        <label for="DIACHI">Địa chỉ</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="QUOCGIA" type="text" value="<?php if(isset($quocgia)) echo $quocgia?>" required/>
+                                                        <label for="QUOCGIA">Quốc Gia</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="ANH" type="text" value="" required />
+                                                        <label for="ANH">Ảnh đại diện</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="SDT_CT" type="text" value="<?php if(isset($sdt)) echo $sdt?>" required />
+                                                        <label for="SDT_CT">Số điện thoại công ty</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="TGKETTHUC" type="date" value="<?php if(isset($tgkt)) echo $tgkt?>" required/>
-                                                    <label for="TGKETTHUC">Hạn ứng tuyển:</label>
+                                                    <input class="form-control" name="EMAIL" type="text" value="<?php if(isset($email)) echo $email?>" required />
+                                                    <label for="EMAIL">Email</label>
+                                                </div>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
+
                                                 <p><?php if(isset($error_result)) echo $error_result ?></p>
                                                 <input class="btn btn-primary" type="submit" name="submit" value="Tạo">
-                                                <input class="btn btn-primary" type="submit" value="Thử lại" value="<?php header("Location: createCV.php");?>">
-                                                <a href="DSVL.php"> Quay lại trang chủ </a>
+                                                <input class="btn btn-primary" type="submit" value="Thử lại" value="<?php header("Location: createCT.php");?>">
+                                                <a href="DSCTY.php"> Quay lại trang chủ </a>
+
                                             </div>
                                         </form>
                                     </div>
