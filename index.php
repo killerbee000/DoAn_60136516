@@ -89,20 +89,19 @@ include 'SQL/config.php';
                                         $result = $conn->query("SELECT * FROM congty");
 
                                         while ($row = $result->fetch_array()) { ?>
-                                            <div class="col mb-2">
-                                                <a href="./detail.php?id=<?= $row['MACTY'] ?>" style="text-decoration: none;">
+                                            <div class="col mb-4">
                                                     <div class="card">
-                                                      <a href="#" class="ripple"> <img class="img-thumbnail rounded" style="float: end" src="<?= $row['Anh'] ?>"/></a>
+                                                      <a href="#" class="ripple"> <img class="img-thumbnail" style="width:200px;height:200px;" src="<?= $row['Anh'] ?>"/></a>
                                                         <div class="card-body">
                                                             <div class="text-center text-dark">
-                                                                <h5><span><?= $row['TENCTY'] ?></span></h5>
+                                                                <b><span><?= $row['TENCTY'] ?></span></b>
                                                                 <p><?= "Địa chỉ: ".$row['DIACHI'] ?></p>
                                                                 <p><?= "Quốc gia: ".$row['QUOCGIA']?></p>
                                                                 <b class="text-muted">SĐT: <?= $row['SDT_CT'] ?></b>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
-                                                            <div class="text-center"><a class="btn btn-sm btn-outline-success mt-auto" href="#">Thêm vào giỏ hàng</a></div>
+                                                            <div class="text-center"><a class="btn btn-sm btn-outline-primary mt-auto" href="#">Xem chi tiết</a></div>
                                                         </div>
                                                     </div>
                                                 </a>

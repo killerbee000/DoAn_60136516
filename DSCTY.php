@@ -51,36 +51,25 @@
                 <nav class="sb-sidenav accordion sb-sidenav bg-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-
                             <div class="sb-sidenav-menu-heading">Danh sách trang</div>
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-house-door-fill"></i></div>
                                                     Trang chủ
                             </a>
                             <hr class="dropdown-divider" />
-
                             <a class="nav-link" href="DSVL.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-briefcase-fill"></i>
                                 </div>
                                 Danh sách Việc làm
                             </a>
                             <hr class="dropdown-divider" />
-
                             <a class="nav-link" href="DSCTY.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-building"></i>
                                     </i></div>
                                 Danh sách Công Ty
                             </a>
-
                         </div>
                     </div>
-<!--                    <div class="sb-sidenav-footer">-->
-<!--                        <div class="small">Tài khoản đăng nhập:</div>-->
-<!--                        --><?php
-//                        session_start();
-//                        print_r($_SESSION["email"]) ;
-//                        ?>
-<!--                    </div>-->
                 </nav>
             </div>
             <div id="layoutSidenav_content">

@@ -72,13 +72,6 @@
 
                     </div>
                 </div>
-                <!--                    <div class="sb-sidenav-footer">-->
-                <!--                        <div class="small">Tài khoản đăng nhập:</div>-->
-                <!--                        --><?php
-                //                        session_start();
-                //                        print_r($_SESSION["email"]) ;
-                //                        ?>
-                <!--                    </div>-->
             </nav>
         </div>
             <div id="layoutSidenav_content">
@@ -117,9 +110,8 @@
                                                 <td><?= $row['MACTY'] ?></td>
                                                 <td><?= $row['MUCLUONG'] ?> VND</td>
                                                 <td><?= $row['TGKETTHUC'] ?></td>
-                                                <td><a href="#" class="btn btn-outline-danger"> Xóa </a>
+                                                <td><a href="xoa.php <?= ?$macv = $row['MACV'] ?>" class="btn btn-outline-danger"> Xóa </a>
                                                     <a href="#" class="btn btn-outline-success"> Chỉnh sửa </a></td>
-
                                             </tr>
                                         <?php } ?>
                                     <?php } ?>
