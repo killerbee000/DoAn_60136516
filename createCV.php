@@ -35,23 +35,27 @@
         (int)$mucluong = $_POST['MUCLUONG'];
         $tgkt = $_POST['TGKETTHUC'];
 
-        $checktontai = "SELECT * FROM congviec WHERE MACV = '$macv' AND MUCLUONG = '$mucluong'";
+        $checktontai = "SELECT * FROM congviec WHERE MACV = '$macv' ";
         $result = $conn->query($checktontai);
+
+        $checktontai_mucluong = "SELECT * FROM congviec WHERE MUCLUONG = '$mucluong' ";
+        $result3 = $conn->query($checktontai_mucluong);
+
         if($result->num_rows > 0)
         {
             $error_result = "Công việc đã có trên website";
         }
         elseif (!(is_numeric($mucluong)  && $mucluong > 0 && is_int(0+$mucluong))) {
-            $error_result = "Lỗi dữ liệu MUCLUONG";
+            $error_result = "Mức lương không hợp lệ";
         }
         else
         {
             $query = "INSERT INTO congviec (MACV, TENCV, SL, NN, MACTY,MUCLUONG, TGKETTHUC) VALUES ('$macv','$tencv','$sl','$nn','$macty','$mucluong','$tgkt')";
             $result = $conn->query($query);
             $error_result = "Đã tạo thành công!";
-//            if (!$result) {
-//                $error_result = "Lỗi server!";
-//            }
+            if (!$result) {
+                $error_result = "Lỗi server!";
+            }
         }
     }
     ?>

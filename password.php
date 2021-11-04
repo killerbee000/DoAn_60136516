@@ -12,32 +12,38 @@
     </head>
 
     <?php
-    session_start();
     include './SQL/config.php';
+    if(isset($_POST['reset']))
+        header("Location: password.php");
     if(isset($_POST['submit']))
     {
-        $mess="";
-        $email = $_POST['email'];
-        $query = "SELECT * FROM nguoidung where EMAILND = $email";
+       $mess="";
+       $email = $_POST['email'];
+
+        $query = "SELECT * FROM nguoidung where EMAILND = '$email'";
         $result = $conn->query($query);
 
-        $row = mysqli_fetch_assoc($result);
-        $email_id=$row['EMAILND'];
-        $password=$row['PASSWORD'];
-        if($email == $email_id) {
-            $to = $email;
-            $subject = "Gửi password của $email_id";
-            $txt = "Your password is : $password.";
-            $headers = "From: ITVIEC@edu.com" . "\r\n" .
-                "CC: ITVIEC@edu.com";
+        if($result->num_rows > 0)
+        {
+            $row = mysqli_fetch_assoc($result);
+            $email_id=$row['EMAILND'];
+            $password=$row['PASSWORD'];
+
+            $to = $email_id;
+            $subject = "Mật khẩu của assword ". $email_id;
+            $txt = "Mật khẩu của bạn là: ".$password;
+            $headers = "From: ITVIEC" . "\r\n" .
+                "CC: ITVIEC_ReturnPassword";
             mail($to,$subject,$txt,$headers);
+            $mess = "Đã gửi thành công.". " Check tại <a href='https://mail.google.com/'>Gmail</a>";
         }
-        else{
-            $mess = 'Không hợp lệ!';
+        else
+        {
+            $mess = "*Email không tồn tại";
         }
     }
     ?>
-    <body style="background-image: url('https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1325&q=80')">
+    <body style="background-repeat:no-repeat; background-size: cover;background-image: url('https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1325&q=80')">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -45,23 +51,29 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">GỬI LẠI MẬT KHẨU</h3></div>
-                                    <div class="card-body">
+                                    <div class="card-header bg-danger"><h3 class="text-center font-weight-light my-4 text-light">GỬI LẠI MẬT KHẨU</h3></div>
+                                    <div class="card-body ">
                                         <div class="small mb-3 text-muted">Nhập email mà bạn muốn gửi mật khẩu về:</div>
                                         <form method="post" action="">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="email" type="email" placeholder="" />
                                                 <label for="email">Nhập email</label>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.php">Quay lại đăng nhập</a>
-                                               <input class="btn btn-primary" type="submit" value="Gửi mật khẩu" >
+                                            <div class="d-flex align-items-center justify-content-between mt-2 mb-2 btn-group">
+                                               <input class="btn btn-dark" type="submit" name="submit" value="Gửi mật khẩu" >
+                                                <input class="btn btn-outline-dark" type="submit" name="reset" value="Reset" >
+                                            </div>
+                                            <div class="d-flex text-danger justify-content-center">
                                                 <p> <?php if(isset($mess)) echo $mess?></p>
                                             </div>
+
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.php">Đăng kí tài khoản!?</a></div>
+                                    <div class="card-footer text-center py-lg-3">
+                                        <div class="d-flex justify-content-between"><a href="register.php">Đăng kí tài khoản mới</a>
+                                            <a class="d-flex" href="login.php">Quay lại đăng nhập</a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

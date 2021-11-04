@@ -14,21 +14,26 @@
     <?php
     //THÊM CTY
     include './SQL/config.php';
-    if (isset($_POST['submit'])) {
+    if(isset($_POST['reset']))
+        header("Location: register.php");
 
+    if (isset($_POST['submit'])) {
         $tennd = $_POST['tennd'];
         $sdtnd = $_POST['sdtnd'];
         $psw = $_POST['psw'];
         $email = $_POST['email'];
 
-        $checktontai_ngdung = "SELECT * FROM nguoidung WHERE EMAILND = '$email' AND SDTND = '$sdtnd' ";
-        $result2 = $conn->query($checktontai_ngdung);
+        $checktontai_email = "SELECT * FROM nguoidung WHERE EMAILND = '$email' ";
+        $result2 = $conn->query($checktontai_email);
+
+        $checktontai_sdt = "SELECT * FROM nguoidung WHERE SDTND = '$sdtnd' ";
+        $result3 = $conn->query($checktontai_sdt);
         if($result2->num_rows > 0)
         {
             $error_result = "Email đã đăng ký trên website";
         }
         elseif (!(is_numeric($sdtnd) && $sdtnd > 0 && is_int(0+$sdtnd))) {
-            $error_result = "Lỗi dữ liệu số điện thoại";
+            $error_result = "Số điện thoại không hợp lệ";
         }
         else
         {
@@ -51,7 +56,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">ĐĂNG KÝ TÀI KHOẢN</h3></div>
+                                    <div class="card-header bg-primary"><h2 class="text-center font-weight-light my-4 text-light" >ĐĂNG KÝ TÀI KHOẢN</h2></div>
                                     <div class="card-body">
                                         <form action="" method="post">
                                             <div class="row mb-3">
@@ -81,18 +86,18 @@
                                                         <label for="email">Nhập email</label>
                                                     </div>
                                                 </div>
-                                                <div class="mt-4 mb-0">
-                                                    <div class="d-grid">
+                                                <div class="mt-lg-1 mb-lg-0">
+                                                    <div class="d-flex btn-group" role="group">
                                                         <input class="btn btn-primary" type="submit" name="submit" value="Tạo">
+                                                        <input class="btn btn-outline-primary" type="submit" name="reset" value="Thử lại">
                                                     </div>
                                                     <p style="color: red"><?php if(isset($error_result)) echo $error_result ?></p>
-
                                                 </div>
                                             </div>
 
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center py-3">
+                                    <div class="card-footer text-center py-lg-3">
                                         <div class="small"><a href="login.php">Đã có tài khoản?</a></div>
                                     </div>
                                 </div>

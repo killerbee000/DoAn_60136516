@@ -23,14 +23,19 @@
         $sdt = $_POST['SDT_CT'];
         $anh = $_POST['ANH'];
 
-        $checktontai_CTY = "SELECT * FROM congty WHERE MACTY = '$macty' AND SDT_CT = '$sdt' ";
+        $checktontai_CTY = "SELECT * FROM congty WHERE MACTY = '$macty'  ";
         $result2 = $conn->query($checktontai_CTY);
+
+
+        $checktontai_sdtct = "SELECT * FROM congviec WHERE SDT_CT = '$sdt' ";
+        $result3 = $conn->query($checktontai_sdtct);
+
         if($result2->num_rows > 0)
         {
             $error_result = "Công ty đã đăng ký trên website";
         }
         elseif (!(is_numeric($sdt) && $sdt > 0 && is_int(0+$sdt))) {
-            $error_result = "Lỗi dữ liệu số điện thoại";
+            $error_result = "SDT không hợp lệ";
         }
         else
         {
@@ -106,7 +111,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="EMAIL" type="text" value="<?php if(isset($email)) echo $email?>" required />
+                                                    <input class="form-control" name="EMAIL" type="email" value="<?php if(isset($email)) echo $email?>" required />
                                                     <label for="EMAIL">Email</label>
                                                 </div>
                                                 </div>

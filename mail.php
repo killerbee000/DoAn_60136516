@@ -1,7 +1,7 @@
 <?php
 
 $to_email = "killerbee0088@gmail.com";
-$subject = "Simple email test via PHP";
+$subject = "Simple emaiasdl test via PHP";
 $body = "hello";
 $headers = "From: email";
 

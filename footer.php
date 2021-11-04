@@ -10,10 +10,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 
-<footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
+<footer class="py-4 bg-primary mt-auto ">
+                    <div class="container-fluid px-4 ">
                         <div class=" d-flex align-items-center justify-content-between small">
-                            <div class="text-uppercase text-muted">Copyright &copy; Nguyen Tan Phat 60136516</div>
+                            <div class="text-uppercase text-light">Nguyen Tan Phat 60136516</div>
                         </div>
                     </div>
                 </footer>
