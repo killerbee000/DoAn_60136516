@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="config.php" method="post">
+    <fieldset>
+        <legend>Enter Your Information: </legend>
+    <table border="1">
+        <tr>
+            <td>
+                Fullname
+            </td>
+            <td colspan="">
+                <input type="text" size="50" name="name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Address
+            </td>
+            <td>
+                <input type="text" size="50" name="address">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone
+            </td>
+            <td>
+                <input type="text" size="50" name="numbers">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td align="center">
+                <input type="radio" id="1" name="gender"> Nam
+                <input type="radio" id="2" name="gender"> Nữ
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Country
+            </td>
+            <td>
+                <input size="50" list="browsers" name="browser">
+                <datalist id="browsers">
+                    <option value="Viet Nam">
+                    <option value="USA">
+                    <option value="Japan">
+                    <option value="China">
+                    <option value="Korea">
+                </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Study
+            </td>
+            <td>
+                <input type="checkbox" id="code1" name="code1" value="PHP & MySQL">PHP & MySQL
+                <input type="checkbox" id="code2" name="code2" value="ASP.NET">ASP.NET
+                <input type="checkbox" id="code3" name="code3" value="CNNA">CNNA
+                <input type="checkbox" id="code4" name="code4" value="Security">Security+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Note
+            </td>
+            <td>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit">
+                <input type="reset">
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+</form>
+
+</body>
+</html>

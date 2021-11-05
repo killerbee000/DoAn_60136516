@@ -9,8 +9,7 @@ $result = $conn->query($xoaViec);
 
 if($result)
 {
-    echo 'OK';
-}
+    header("Location: DSVL.php");}
 else
 {
     echo 'KO';

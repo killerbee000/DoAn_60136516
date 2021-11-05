@@ -28,50 +28,15 @@
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+
             </div>
         </form>
-        <!-- Navbar-->
+
     </nav>
 
     <!-- Navbar -->
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav bg-light" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-
-                        <div class="sb-sidenav-menu-heading">Danh sách trang</div>
-                        <a class="nav-link" href="DSCTY.php">
-                            <div class="sb-nav-link-icon"><i class="bi bi-house-door-fill"></i></div>
-                            Trang chủ
-                        </a>
-                        <hr class="dropdown-divider" />
-                        <a class="nav-link" href="DSVL.php">
-                            <div class="sb-nav-link-icon"><i class="bi bi-briefcase-fill"></i>
-                            </div>
-                            Danh sách Việc làm
-                        </a>
-                        <hr class="dropdown-divider" />
-                        <a class="nav-link" href="DSCTY.php">
-                            <div class="sb-nav-link-icon"><i class="bi bi-building"></i>
-                                </i></div>
-                            Danh sách Công Ty
-                        </a>
-
-                    </div>
-                </div>
-                <!--                    <div class="sb-sidenav-footer">-->
-                <!--                        <div class="small">Tài khoản đăng nhập:</div>-->
-                <!--                        --><?php
-                //                        session_start();
-                //                        print_r($_SESSION["email"]) ;
-                //                        ?>
-                <!--                    </div>-->
-            </nav>
-        </div>
-            <div id="layoutSidenav_content"  style="background-size: cover;background-image: url(https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)">
+    <?php include 'Header.php' ?>
+    <div id="layoutSidenav_content"  style="background-size: cover;background-image: url(https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)">
                 <main>
                         <div class="container-fluid mt-8"">
                             <div class="row mt-lg-4 justify-content-center" >

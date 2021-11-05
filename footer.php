@@ -13,7 +13,8 @@
 <footer class="py-4 bg-primary mt-auto ">
                     <div class="container-fluid px-4 ">
                         <div class=" d-flex align-items-center justify-content-between small">
-                            <div class="text-uppercase text-light">Nguyen Tan Phat 60136516</div>
+                            <div class="text-uppercase text-light">NGUYỄN TẤN PHÁT 60136516</div>
+                            <div class="text-uppercase text-light">Lớp: 60.CNTT-2</div>
                         </div>
                     </div>
                 </footer>
