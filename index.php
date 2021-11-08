@@ -17,11 +17,14 @@ include './SQL/config.php';
 $query = "SELECT * FROM congty";
 $result1 = $conn->query($query);
 
+//Option cho công cụ search
 $options ='';
 while($row0 = mysqli_fetch_array($result1))
 {
     $options = $options."<option>$row0[1]</option>";
 }
+
+//Phân Trang
 
 $result2 = mysqli_query($conn, 'select count(MACTY) as total from congty');
 $row = mysqli_fetch_assoc($result2);
@@ -78,26 +81,25 @@ if(!$result2) echo 'Cau truy van bi sai';
                         <div class="col-xl-9">
                             <section class="py-3">
                                 <div class="container px-4 px-lg-5">
-                                    <h1 class="mb-4 text-primary"> Top Employers ――――――――――――――</h1>
+                                    <h1 class="mb-4 text-primary text-center"> Top Employers</h1>
+                                    <hr>
 
                                     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                         <?php
-
                                         while ($row = $result2->fetch_array()) { ?>
                                             <div class="col mb-4">
-                                                    <div class="card">
-                                                      <a href="#" class="ripple"> <img class="img-thumbnail" style="width:auto;height:200px;" src="<?= $row['Anh'] ?>"/></a>
-                                                        <div class="card-body">
-                                                            <div class="text-center text-dark">
-                                                                <b><span><?= $row['TENCTY'] ?></span></b>
-                                                                <p><?= "Địa chỉ: ".$row['DIACHI'] ?></p>
-                                                                <p><?= "Quốc gia: ".$row['QUOCGIA']?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-footer">
-                                                            <div class="text-center"><a class="btn btn-sm btn-outline-primary mt-auto" href="#">Xem chi tiết</a></div>
+                                                <div class="card">
+                                                    <a href="#" class="ripple"> <img class="img-thumbnail w-100" style="width: 200px; height:200px" src="<?= $row['Anh'] ?>"/></a>
+                                                    <div class="card-body">
+                                                        <div class="text-center text-dark">
+                                                            <b><span><?= $row['TENCTY'] ?></span></b>
+                                                            <p><?= "Quốc gia: ".$row['QUOCGIA']?></p>
                                                         </div>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <div class="text-center"><a class="btn btn-sm btn-outline-primary mt-auto" href="./detail.php?id=<?= $row['MACTY'] ?>">Xem chi tiết</a></div>
+                                                    </div>
+                                                </div>
                                                 </a>
                                             </div>
                                         <?php } ?>
@@ -107,9 +109,8 @@ if(!$result2) echo 'Cau truy van bi sai';
 
                                         //Trở về
                                         if ($current_page > 1 && $total_page > 1){
-                                            echo '<a href="index.php?page='.($current_page-1).'" class="btn btn-outline-primary text-dark" role="button">Trang Đầu</a> ';
+                                            echo '<a href="index.php?page='.($current_page-1).'" class="btn btn-outline-primary" role="button">Trang Đầu</a> ';
                                         }
-
                                         //Số trang
                                         for ($i = 1; $i <= $total_page; $i++){
                                             if ($i == $current_page){
@@ -119,10 +120,9 @@ if(!$result2) echo 'Cau truy van bi sai';
                                                 echo '<a class="btn btn-outline-primary" href="index.php?page='.$i.'">'.$i.'</a> ';
                                             }
                                         }
-
                                         //Cuối trang
                                         if ($current_page < $total_page && $total_page > 1){
-                                            echo '<a href="index.php?page='.($current_page+1).'" class="btn btn-outline-primary text-dark" role="button">Trang Cuối</a>';
+                                            echo '<a href="index.php?page='.($current_page+1).'" class="btn btn-outline-primary " role="button">Trang Cuối</a>';
                                         }
                                         ?>
                                     </center>

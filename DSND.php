@@ -15,7 +15,7 @@
     <body class="sb-nav-fixed">
     <?php
     include './SQL/config.php';
-    $query = 'SELECT * FROM congviec';
+    $query = 'SELECT * FROM nguoidung';
     $result = $conn->query($query);
     if(!$result) echo 'Cau truy van bi sai';
     ?>
@@ -23,40 +23,34 @@
     <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">DANH SÁCH CÔNG VIỆC</h1>
+                        <h1 class="mt-4">DANH SÁCH NGƯỜI DÙNG</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">TRANG CHỦ</a></li>
-                            <li class="breadcrumb-item active">Danh sách công việc</li>
+                            <li class="breadcrumb-item active">Danh sách người dùng</li>
                         </ol>
 
-                        <a class="mb-4 btn btn-primary" href="createCV.php" role="button">Tạo mới CV</a>
+                        <a class="mb-4 btn btn-primary" href="createCV.php" role="button">Tạo tài khoản mới</a>
 
                         <div class="card mb-4">
                             <div class="card-body">
                                 <table id="datatablesSimple"class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Mã CV</th>
-                                            <th>Tên Công việc</th>
-                                            <th>Số lượng tuyển</th>
-                                            <th>Ngôn Ngữ</th>
-                                            <th>Tuyển dụng bởi</th>
-                                            <th>Mức Lương</th>
-                                            <th>Thời gian ứng tuyển kết thúc</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Số điện thoại</th>
                                       </tr>
                                     </thead>
                                     <?php if($result-> num_rows != 0){ ?>
                                         <?php while($row = $result->fetch_array()){ ?>
                                             <tr>
-                                                <td><?= $row['MACV'] ?></td>
-                                                <td><?= $row['TENCV'] ?></td>
-                                                <td><?= $row['SL'] ?></td>
-                                                <td><?= $row['NN'] ?></td>
-                                                <td><?= $row['MACTY'] ?></td>
-                                                <td><?= $row['MUCLUONG'] ?> VND</td>
-                                                <td><?= $row['TGKETTHUC'] ?></td>
-                                                <td><a class="btn btn-outline-danger" href="Xoa_VL.php?macv=<?= $row['MACV'] ?>"> <i class="bi bi-x-circle"></i> </a>
-                                                    <a class="btn btn-outline-success" href="Edit_VL.php?macv=<?= $row['MACV'] ?>"><i class="bi bi-pencil"> </i></a>
+                                                <td><?= $row['TENND'] ?></td>
+                                                <td><?= $row['EMAILND'] ?></td>
+                                                <td><?= $row['PASSWORD'] ?></td>
+                                                <td><?= $row['SDTND'] ?></td>
+                                                <td><a class="btn btn-outline-danger" href="Xoa_ND.php?tennd=<?= $row['TENND'] ?>"> <i class="bi bi-x-circle"></i> </a>
+                                                    <a class="btn btn-outline-success" href="Edit_ND.php?tennd=<?= $row['TENND'] ?>"><i class="bi bi-pencil"> </i></a>
                                                </td>
                                             </tr>
                                         <?php } ?>

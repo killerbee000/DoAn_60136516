@@ -44,6 +44,12 @@
                         Danh sách Công Ty
                     </a>
                     <hr class="dropdown-divider" />
+                    <a class="nav-link" href="DSND.php">
+                        <div class="sb-nav-link-icon"><i class="bi bi-people-fill"></i>
+                        </div>
+                        Quản lí người dùng
+                    </a>
+                    <hr class="dropdown-divider" />
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Bài Tập Cá Nhân
@@ -81,7 +87,6 @@
                                     <a class="nav-link" href="./BaiTap/BaiTap_ARRAY/Bai5/5.php">Bài 5</a>
                                     <a class="nav-link" href="./BaiTap/BaiTap_ARRAY/Bai6/6.php">Bài 6</a>
                                     <a class="nav-link" href="./BaiTap/BaiTap_ARRAY/Bai7/7.php">Bài 7</a>
-
                                 </nav>
                             </div>
 

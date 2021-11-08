@@ -24,7 +24,7 @@
     <?php include 'Header.php' ?>
     <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid">
                         <h1 class="mt-4">DANH SÁCH CÔNG TY</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">TRANG CHỦ</a></li>
@@ -51,15 +51,16 @@
                                     <?php if($result-> num_rows != 0){ ?>
                                         <?php while($row = $result->fetch_array()){ ?>
                                             <tr>
-                                                <td><img src="<?= $row['Anh'] ?>" class="img-fluid rounded-start" alt="..." style="width: 100px"></td>                                                <td><?= $row['MACTY'] ?></td>
+                                                <td><img src="<?= $row['Anh'] ?>" class="img-fluid rounded-start" alt="..." style="width: 100px"></td>
+                                                <td><?= $row['MACTY'] ?></td>
                                                 <td><?= $row['TENCTY'] ?></td>
                                                 <td><?= $row['DIACHI'] ?></td>
                                                 <td><?= $row['SLNV'] ?></td>
                                                 <td><?= $row['QUOCGIA'] ?></td>
                                                 <td><?= $row['EMAIL'] ?></td>
                                                 <td><?= $row['SDT_CT'] ?></td>
-                                                <td><a class="btn btn-outline-danger" href="php/Xoa_CT.php?macty=<?= $row['MACTY'] ?>"> Xóa </a>
-                                                    <a class="btn btn-outline-success" href="Edit_CTY.php?macty=<?= $row['MACTY'] ?>"> Chỉnh sửa </a>
+                                                <td><a class="btn btn-outline-danger" href="Xoa_CT.php?macty=<?= $row['MACTY'] ?>"><i class="bi bi-x-circle"></i></a>
+                                                    <a class="btn btn-outline-success" href="Edit_CTY.php?macty=<?= $row['MACTY'] ?>"><i class="bi bi-pencil"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

@@ -26,7 +26,7 @@
         }
     }
     if(isset($_SESSION["email"])) {
-        header("Location:DSVL.php");
+        header("Location:index.php");
     }
     ?>
 
