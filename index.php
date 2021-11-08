@@ -83,13 +83,12 @@ if(!$result2) echo 'Cau truy van bi sai';
                                 <div class="container px-4 px-lg-5">
                                     <h1 class="mb-4 text-primary text-center"> Top Employers</h1>
                                     <hr>
-
                                     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                         <?php
                                         while ($row = $result2->fetch_array()) { ?>
                                             <div class="col mb-4">
                                                 <div class="card">
-                                                    <a href="#" class="ripple"> <img class="img-thumbnail w-100" style="width: 200px; height:200px" src="<?= $row['Anh'] ?>"/></a>
+                                                    <a href="./detail.php?id=<?= $row['MACTY'] ?>" class="ripple"> <img class="img-thumbnail w-100" style="width: 200px; height:200px" src="<?= $row['Anh'] ?>"/></a>
                                                     <div class="card-body">
                                                         <div class="text-center text-dark">
                                                             <b><span><?= $row['TENCTY'] ?></span></b>

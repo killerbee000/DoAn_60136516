@@ -29,7 +29,7 @@
                             <li class="breadcrumb-item active">Danh sách người dùng</li>
                         </ol>
 
-                        <a class="mb-4 btn btn-primary" href="createCV.php" role="button">Tạo tài khoản mới</a>
+                        <a class="mb-4 btn btn-primary" href="taoND.php" role="button">Nhập người dùng mới</a>
 
                         <div class="card mb-4">
                             <div class="card-body">
