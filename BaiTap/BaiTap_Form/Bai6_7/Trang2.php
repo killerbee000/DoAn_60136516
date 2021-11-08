@@ -34,7 +34,7 @@ if(!preg_match('/[A-Za-z]/',$_stn && $_sth))
 
 ?>
 
-<form action="" method="post">
+<form action="" method="POST">
     <table align="center" border="1">
         <tr>
             <td align="center" colspan="5" bgcolor="#6495ed"><h2>Chọn Phép tính cho hai số</h2></td>

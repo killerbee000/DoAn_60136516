@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<form action="" method="post">
+<form action="" method="POST">
 
     <table  bgcolor="#6495ed" align="center">
         <tr>

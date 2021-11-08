@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="POST">
     <table  bgcolor="#f0f8ff" align="center">
         <tr  bgcolor="#6495ed">
             <td colspan="3" align="center"> <h1>Nhập và tính dãy số</h1></td>

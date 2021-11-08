@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="POST">
     <table border="1">
         <tr>
             <td> Nhập vào số:</td>
@@ -64,7 +64,7 @@ if(isset($_POST['submit'])){
         </tr>
         <tr>
             <td colspan="2">
-                <textarea cols="50" rows="30" name="ketqua"><?php if (isset($_POST['ketqua'])) echo $ketqua?></textarea>
+                <textarea  cols="50" rows="30" name="ketqua"><?php if (isset($_POST['ketqua'])) echo $ketqua?></textarea>
             </td>
         </tr>
         <tr>
@@ -72,6 +72,5 @@ if(isset($_POST['submit'])){
         </tr>
     </table>
 </form>
-
 </body>
 </html>

@@ -1,73 +1,72 @@
 <?php
 
+if(isset($_POST['submit'])){
+    $arr = explode(",", $_POST['input']);
+    $number = $_POST['key'];
 
-function swap(&$a, &$b)
-{
-    $temp = $a;
-    $a = $b;
-    $b = $temp;
+    $result = -1;
+    for($i=0; $i< count($arr); $i++) {
+        if($arr[$i] == $number) $result = $i;
+    }
 }
-
-function sxGiam($arr)
-{
-    for($i=0;$i<count($arr)-1;$i++)
-        for($j=$i+1;$j<count($arr);$j++)
-        {
-            if($arr[$i] < $arr[$j])
-                swap($arr[$i], $arr[$j]);
-        }
-    return $arr;
-}
-
-if(isset($_POST['submit']))
-{
-        $mangNhap = $_POST['nhapmang'];
-//        $mangtach = explode(", ", $mangNhap);
-//        $KQ_giam = implode(", ",sxGiam($mangtach));
-}
-
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
+
 <body>
-<form>
-    <table  bgcolor="#ffc0cb">
-        <tr  bgcolor="#8b4513">
-            <td colspan="3" align="center"> <h3>TÌM KIẾM </h3></td>
+<form method="post">
+    <table align="center" style="border: 1px solid;" bgcolor="#b1dde0">
+        <tr>
+            <td style="padding: 0px 200px; color: white" colspan="2" bgcolor="#097980">
+                <h2>TÌM KIẾM</h2>
+            </td>
         </tr>
         <tr>
+            <td>Nhập mảng: </td>
             <td>
-                Nhập Mảng:
+                <input type="text" required placeholder="Nhập vào mảng..." name="input" value="<?php if(isset($arr)) foreach($arr as $i) echo $i.','; ?>" style="width: 90%;">
             </td>
+        </tr>
+        <tr>
+            <td>Nhập vào số cần tìm: </td>
             <td>
-                <input type="text" name="nhapmang" size="30" value="<?php $_POST['nhapmang']?>">
+                <input type="text" required name="key" value="<?php echo isset($number)? $number : '' ?>" style="width: 25%;">
             </td>
+        </tr>
+        <tr>
+            <td></td>
             <td>
-                <p style="color: red"> * </p>
+                <input type="submit" name="submit" value="Tìm kiếm" style="padding: 0 20px; background-color: #5abbc1">
             </td>
         </tr>
         <tr>
-            <td colspan="3" align="center">
-                <input type="submit" name="submit" value="submit">
+            <td>Mảng: </td>
+            <td>
+                <input type="text" readonly value="<?php if(isset($arr)) foreach($arr as $i) echo $i.', '; ?>" style="width: 90%;">
             </td>
         </tr>
         <tr>
-            <td>Sau khi sắp xếp</td>
+            <td>Kết quả tìm kiếm: </td>
+            <td>
+                <input type="text" readonly value="<?php if(isset($number)) if($result == -1) echo 'Không tìm thấy '.$number.' trong mảng.';
+                else echo 'Đã tìm thấy '.$number.' tại vị trí thứ '.$result.' trong mảng.'; ?>"
+                       style="width: 90%; background-color: #cbe5e7; color: red; border: 1px solid black">
+            </td>
         </tr>
         <tr>
-            <td>Tăng dần: </td>
-            <td>  <input type="text" name="td" size="30"> </td>
-        </tr>
-        <tr>
-            <td>Giảm dần: </td>
-            <td>  <input type="text" name="gd" size="30" value=""> </td>
+            <td align="center" colspan="2" bgcolor="#50b3bb">(Các phần tử cách nhau bởi dấu ",")</td>
         </tr>
     </table>
 </form>
 </body>
+
 </html>

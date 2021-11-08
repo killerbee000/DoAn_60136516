@@ -14,7 +14,6 @@
 </head>
 <?php
 include './SQL/config.php';
-//Dropdown list MACTY
 $query = "SELECT * FROM congty";
 $result1 = $conn->query($query);
 
@@ -23,6 +22,28 @@ while($row0 = mysqli_fetch_array($result1))
 {
     $options = $options."<option>$row0[1]</option>";
 }
+
+$result2 = mysqli_query($conn, 'select count(MACTY) as total from congty');
+$row = mysqli_fetch_assoc($result2);
+$total_records = $row['total'];
+
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 8;
+
+$total_page = ceil($total_records / $limit);
+
+if ($current_page > $total_page){
+    $current_page = $total_page;
+}
+else if ($current_page < 1){
+    $current_page = 1;
+}
+
+$start = ($current_page - 1) * $limit;
+
+$result2 = $conn->query("SELECT * FROM congty LIMIT $start, $limit");
+
+if(!$result2) echo 'Cau truy van bi sai';
 
 ?>
     <body>
@@ -61,9 +82,8 @@ while($row0 = mysqli_fetch_array($result1))
 
                                     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                         <?php
-                                        $result = $conn->query("SELECT * FROM congty");
 
-                                        while ($row = $result->fetch_array()) { ?>
+                                        while ($row = $result2->fetch_array()) { ?>
                                             <div class="col mb-4">
                                                     <div class="card">
                                                       <a href="#" class="ripple"> <img class="img-thumbnail" style="width:auto;height:200px;" src="<?= $row['Anh'] ?>"/></a>
@@ -72,7 +92,6 @@ while($row0 = mysqli_fetch_array($result1))
                                                                 <b><span><?= $row['TENCTY'] ?></span></b>
                                                                 <p><?= "Địa chỉ: ".$row['DIACHI'] ?></p>
                                                                 <p><?= "Quốc gia: ".$row['QUOCGIA']?></p>
-                                                                <b class="text-muted">SĐT: <?= $row['SDT_CT'] ?></b>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
@@ -83,6 +102,30 @@ while($row0 = mysqli_fetch_array($result1))
                                             </div>
                                         <?php } ?>
                                     </div>
+                                    <center>
+                                        <?php
+
+                                        //Trở về
+                                        if ($current_page > 1 && $total_page > 1){
+                                            echo '<a href="index.php?page='.($current_page-1).'" class="btn btn-outline-primary text-dark" role="button">Trang Đầu</a> ';
+                                        }
+
+                                        //Số trang
+                                        for ($i = 1; $i <= $total_page; $i++){
+                                            if ($i == $current_page){
+                                                echo '<span class="btn btn-primary">'.$i.'</span> ';
+                                            }
+                                            else{
+                                                echo '<a class="btn btn-outline-primary" href="index.php?page='.$i.'">'.$i.'</a> ';
+                                            }
+                                        }
+
+                                        //Cuối trang
+                                        if ($current_page < $total_page && $total_page > 1){
+                                            echo '<a href="index.php?page='.($current_page+1).'" class="btn btn-outline-primary text-dark" role="button">Trang Cuối</a>';
+                                        }
+                                        ?>
+                                    </center>
                                 </div>
                             </section>
 

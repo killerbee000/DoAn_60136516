@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="Trang2.php" method="post">
+<form action="Trang2.php" method="POST">
     <table align="center" border="1">
         <tr>
             <td align="center" colspan="5" bgcolor="#6495ed"><h2>Chọn Phép tính cho hai số</h2></td>

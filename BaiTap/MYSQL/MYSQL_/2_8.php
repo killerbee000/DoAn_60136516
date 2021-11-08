@@ -93,7 +93,7 @@
             $numRows = mysqli_num_rows($re);
             $maxPage = ceil($numRows/$rowPerPage) + 1;
             if ($_GET['page'] > 1){
-                echo '<a href="thongtin_ct_sua_2_8.php?page='.($_GET['page'] - 1).'"> << </a>'; //gắn thêm nút Back
+                echo '<a href="2_8.php?page='.($_GET['page'] - 1).'"> << </a>'; //gắn thêm nút Back
             }
             for ($i=1 ; $i<=$maxPage ; $i++)
             {
@@ -101,10 +101,10 @@
                 {
                     echo '<b> <u>'.$i.'</u> </b>'; //trang hiện tại sẽ được bôi đậm
                 }
-                else echo '<a href="thongtin_ct_sua_2_8.php?page='.$i.'"> '.$i.' </a>';
+                else echo '<a href="2_8.php?page='.$i.'"> '.$i.' </a>';
             }
             if ($_GET['page'] < $maxPage) {
-                echo '<a href="thongtin_ct_sua_2_8.php?page='.($_GET['page'] + 1).'"> >> </a>';  //gắn thêm nút Next
+                echo '<a href="2_8.php?page='.($_GET['page'] + 1).'"> >> </a>';  //gắn thêm nút Next
             }
             $conn->close();
         ?>

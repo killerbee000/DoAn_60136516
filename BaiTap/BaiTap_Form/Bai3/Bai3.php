@@ -12,27 +12,25 @@
 
 <?php
 
-$_name = $_POST['name'];
-$_sc = $_POST['sc'];
-$_sm = $_POST['sm'];
-$_dg = $_POST['dg'];
-$_sttt = $_POST['sttt'];
+if(isset($_POST['submit'])) {
+    $_name = $_POST['name'];
+    $_sc = $_POST['sc'];
+    $_sm = $_POST['sm'];
+    $_dg = $_POST['dg'];
+    $_sttt = $_POST['sttt'];
 
-$_dg = 2000;
+    $_dg = 2000;
 
-if ($_sc != 0 && $_sm != 0)
-{
-    $_sttt = ($_sc + $_sm)*$_dg;
+    if ($_sc != 0 && $_sm != 0) {
+        $_sttt = ($_sc + $_sm) * $_dg;
+    } else {
+        $_sttt = "Vui long nhap lai";
+    }
 }
-else
-{
-    $_sttt = "Vui long nhap lai";
-}
-
 
 ?>
 
-<form action="" method="post">
+<form method="POST" action="Bai3.php">
 <table  bgcolor="#ffebcd" align="center">
     <tr>
         <td colspan="3" align="center" bgcolor="orange">
@@ -72,7 +70,7 @@ else
 
     </tr>
     <tr>
-        <td colspan="3" align="center"> <input type="submit"></td>
+        <td colspan="3" align="center"> <input type="submit" name="submit" value="submit"></td>
     </tr>
 </table>
 </form>

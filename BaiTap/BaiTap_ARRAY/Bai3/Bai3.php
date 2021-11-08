@@ -61,7 +61,7 @@ if(isset($_POST["submit"]))
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="POST">
     <table  bgcolor="" align="center" border="1">
         <tr  bgcolor="purple">
             <td colspan="3" align="center"> <h1>Phát sinh mảng và tính toán</h1></td>

@@ -2,7 +2,7 @@
     $dbhost = 'localhost';
     $dbuser = 'root';
     $dbpass = '';
-    $dbname = 'quanly_bansua';
+    $dbname = 'databasemoi';
 
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

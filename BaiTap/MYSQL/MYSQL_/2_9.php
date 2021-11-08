@@ -81,7 +81,7 @@
 
     <div class="container col-md-8">
         <div class="row">
-            <h2>TÌM KIẾM THÔNG TIN SỮA</h2>
+            <h2 style="font-family: 'Comic Sans MS'">TÌM KIẾM THÔNG TIN SỮA</h2>
             <form method="post" action class="col-md-12 main" style="display: flex; justify-content: center;">
                 <h5 class="mt-2 fw-bold" style="color:red;" width="100px">Tên sữa:</h5>
                 <input type="text" name="key" class="mb-4 mx-2"

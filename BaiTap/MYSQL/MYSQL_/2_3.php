@@ -47,9 +47,9 @@
                     <td><?= $row['Ten_khach_hang'] ?></td>
                     <td align="center">
                         <?php if($row['Phai'] == 1){ ?>
-                            <img src="./images/nu.png" alt="">
+                            <img src="https://image.flaticon.com/icons/png/512/146/146025.png" alt="">
                         <?php }
-                        else echo '<img src="./images/nam.png" alt="">';
+                        else echo '<img src="https://image.flaticon.com/icons/png/512/146/146007.png" alt="">';
                         ?>
 
                     </td>

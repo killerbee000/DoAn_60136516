@@ -39,7 +39,7 @@
         // vị trí của mẩu tin đầu tiên trên mỗi trang
         $offset = ($_GET['page'] - 1) * $rowPerPage;
 
-        $query = "SELECT * FROM sua, hang_sua, loai_sua LIMIT $offset, $rowPerPage";
+        $query = "SELECT * FROM sua, hang_sua, loai_sua LIMIT 1,5";
         $result = $conn->query($query);
         if(!$result) echo 'Cau truy van bi sai';
         $i = 1;
@@ -89,10 +89,10 @@
                 {
                     echo '<b> <u>'.$i.'</u> </b>'; //trang hiện tại sẽ được bôi đậm
                 }
-                else echo '<a href="thongtin_sua_2_4.php?page='.$i.'"> '.$i.' </a>';
+                else echo '<a href="2_4.php?page='.$i.'"> '.$i.' </a>';
             }
             if ($_GET['page'] < $maxPage) {
-                echo '<a href="thongtin_sua_2_4.php?page='.($_GET['page'] + 1).'"> >> </a>';  //gắn thêm nút Next
+                echo '<a href="DoAn_60136516/BaiTap/MYSQL/MYSQL_/2_4.php?page='.($_GET['page'] + 1).'"> >> </a>';  //gắn thêm nút Next
             }
             $conn->close();
         ?>
